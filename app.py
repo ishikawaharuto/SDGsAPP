@@ -205,9 +205,11 @@ def log_from_extension():
     conn.close()
     return jsonify({'status': 'success'}), 201
 
+@app.cli.command("init-db")
+def init_db_command():
+    """Creates the database tables."""
+    init_db()
+    print("Initialized the database.")
+
 if __name__ == '__main__':
-    # サーバー起動時に一度だけDBを初期化
-    # Renderなどの本番環境では直接実行しない方が良い場合もある
-    with app.app_context():
-        init_db()
     app.run(debug=True)
