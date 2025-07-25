@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>デジタルカーボンフットプリント</title>
+    <style>
+        body { font-family: sans-serif; max-width: 800px; margin: auto; padding: 20px; }
+        h1, h2 { text-align: center; }
+        .container { display: flex; gap: 20px; }
+        .chart-container { flex: 1; }
+        form { display: flex; flex-direction: column; gap: 10px; padding: 20px; border: 1px solid #ccc; border-radius: 8px; }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div style="text-align: right; padding: 10px;">
+        ようこそ, {{ current_user.username }} さん | 
+        <a href="/profile">プロフィール</a> | 
+        <a href="/logout">ログアウト</a>
+    </div>
+    <h1>
+
+ デジタルカーボンフットプリント ダッシュボード</h1>
+
+    <div class="container">
+        <div class="chart-container">
+            <h2>月間CO2排出量 (g)</h2>
+            <canvas id="monthlyChart"></canvas>
+        </div>
+        <div class="chart-container">
+            <h2>活動別CO2排出量 (g)</h2>
+            <canvas id="activityChart"></canvas>
+        </div>
+    </div>
+
+    <h2>
+ 活動を記録する</h2>
+    <form id="activityForm">
+        <label for="activity_date">日付:</label>
+        <input type="date" id="activity_date" required>
+
+        <label for="activity_type">活動の種類:</label>
+        <select id="activity_type" required>
+            <option value="video_streaming_hd">動画視聴(HD)</option>
+            <option value="video_conference">ビデオ会議</option>
+            <option value="cloud_gaming">クラウドゲーム</option>
+            <option value="music_streaming">音楽ストリーミング</option>
+            <option value="web_browse">Webサイト閲覧</option>
+        </select>
+
+        <label for="duration">利用時間 (時間):</label>
+        <input type="number" id="duration" step="0.1" required>
+
+        <label for="device">使用デバイス:</label>
+        <select id="device" required>
+            <option value="smartphone">スマートフォン</option>
+            <option value="laptop">ノートPC</option>
+            <option value="desktop">デスクトップPC</option>
+        </select>
+
+        <button type="submit">記録する</button>
+    </form>
+
+    <script src="/static/main.js"></script>
+</body>
+</html>

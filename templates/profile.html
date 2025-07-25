@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>プロフィール</title>
+    <style>
+        body { font-family: sans-serif; max-width: 800px; margin: auto; padding: 20px; }
+        .api-key { background-color: #f0f0f0; padding: 10px; border: 1px solid #ccc; border-radius: 4px; word-wrap: break-word; }
+    </style>
+</head>
+<body>
+    <h1>プロフィール</h1>
+    <p><a href="/">ダッシュボードに戻る</a></p>
+    <h2>Chrome拡張機能用 APIキー</h2>
+    <p>以下のAPIキーをChrome拡張機能に設定してください。</p>
+    <p class="api-key">{{ current_user.api_key }}</p>
+</body>
+</html>
